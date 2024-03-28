@@ -1,0 +1,49 @@
+{
+  "name": "pub-sub",
+  "description": "A publisher subscriber implementation in TypeScript.",
+  "version": "0.0.0",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Guillaume-Docquier/pub-sub-ts.git"
+  },
+  "module": "./dist/pub-sub.js",
+  "main": "./dist/pub-sub.cjs",
+  "types": "./dist/pub-sub.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/pub-sub.js",
+      "require": "./dist/pub-sub.cjs",
+      "types": "./dist/pub-sub.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "vitest",
+    "coverage": "vitest run --coverage",
+    "typecheck": "tsc",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "npm run lint -- --fix",
+    "docs": "typedoc src/index.ts --out docs",
+    "build": "npm run build:src && npm run build:types",
+    "build:src": "npm run typecheck && vite build",
+    "build:types": "dts-bundle-generator --config dts-bundle-generator.config.cjs",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@vitest/coverage-istanbul": "^1.2.2",
+    "dts-bundle-generator": "^9.2.4",
+    "eslint": "^8.56.0",
+    "eslint-config-standard-with-typescript": "^43.0.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.1.1",
+    "typedoc": "^0.25.7",
+    "typescript": "^5.3.3",
+    "vite-tsconfig-paths": "^4.3.1",
+    "vitest": "^1.2.1"
+  }
+}
