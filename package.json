@@ -1,20 +1,43 @@
 {
-  "name": "pub-sub",
-  "description": "A publisher subscriber implementation in TypeScript.",
-  "version": "0.0.0",
+  "name": "pub-sub-ts",
+  "description": "A fully typed publisher subscriber implementation in TypeScript.",
+  "version": "1.0.0",
+  "keywords": [
+    "pubsub",
+    "publisher",
+    "publish",
+    "subscriber",
+    "subscribe",
+    "unsubscribe",
+    "tiny",
+    "typescript",
+    "ts",
+    "typed",
+    "eventemitter",
+    "event",
+    "events",
+    "emitter",
+    "emit",
+    "listener",
+    "addlistener",
+    "addeventlistener",
+    "dispatch",
+    "dispatcher",
+    "observer"
+  ],
   "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Guillaume-Docquier/pub-sub-ts.git"
   },
-  "module": "./dist/pub-sub.js",
-  "main": "./dist/pub-sub.cjs",
-  "types": "./dist/pub-sub.d.ts",
+  "module": "./dist/pub-sub-ts.js",
+  "main": "./dist/pub-sub-ts.cjs",
+  "types": "./dist/pub-sub-ts.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/pub-sub.js",
-      "require": "./dist/pub-sub.cjs",
-      "types": "./dist/pub-sub.d.ts"
+      "import": "./dist/pub-sub-ts.js",
+      "require": "./dist/pub-sub-ts.cjs",
+      "types": "./dist/pub-sub-ts.d.ts"
     }
   },
   "files": [
