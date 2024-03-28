@@ -67,6 +67,11 @@ export const PubSub = {
     function subscribe<TEventName extends TEvents['name']> (eventName: TEventName, handler: EventHandler<TEvents & {
       name: TEventName
     }>): void {
+      const alreadyExistingSubscription = eventHandlersReverseLookup.get(handler as EventHandler<TEvents>)
+      if (alreadyExistingSubscription !== undefined && alreadyExistingSubscription !== eventName) {
+        throw new Error(`Cannot register handler for ${eventName} because it is already registered for ${alreadyExistingSubscription}`)
+      }
+
       if (!eventHandlers.has(eventName)) {
         eventHandlers.set(eventName, new Set())
       }

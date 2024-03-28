@@ -20,7 +20,7 @@ interface MyEvent2 extends Event {
 
 describe('PubSub', () => {
   describe('subscribe', () => {
-    it.each([1, 2, 3])('should register the handler only once even if called %o times', nbSubscribe => {
+    it.each([1, 2, 3])('should register the handler only once even if called %o times for the same event', nbSubscribe => {
       // Arrange
       const pubSub = PubSub.create<MyEvents>()
       const event: MyEvent1 = {
@@ -42,6 +42,19 @@ describe('PubSub', () => {
 
       expect(handlerSpy).toHaveBeenCalledOnce()
       expect(handlerSpy).toHaveBeenCalledWith(event)
+    })
+
+    it('should throw if called with the same handler for different events', () => {
+      // Arrange
+      const pubSub = PubSub.create<MyEvents>()
+
+      const handlerSpy = vitest.fn()
+      pubSub.subscribe('MyEvent1', handlerSpy)
+
+      // Act & Assert
+      expect(() => {
+        pubSub.subscribe('MyEvent2', handlerSpy)
+      }).toThrow()
     })
   })
 
